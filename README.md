@@ -104,7 +104,9 @@ along a filename and it makes things easier since we dont need
 to create sub directories. This command, when executed from within
 the *setroubleshootd_t* domain, will leave a suid shell in place
 for the discretionary execution by the attacker who already runs
-his shell in the *unconfined_t* domain. ![Voila!](https://github.com/stealth/troubleshooter/blob/master/troubleshooter.jpg)
+his shell in the *unconfined_t* domain.
+
+![Voila!](https://github.com/stealth/troubleshooter/blob/master/troubleshooter.jpg)
 
 A demo exploit using _NetworkManager's_ openvpn plugin as an attack vector is
 included in this git. Dont get fooled: There exist many other
@@ -162,7 +164,7 @@ thesis by grant No. 743c13377350.
 * [setroubleshoot](https://fedorahosted.org/setroubleshoot/)
 * [setroubleshoot git](https://git.fedorahosted.org/git/setroubleshoot.git)
 * [Mandatory Access Control (MAC)](http://en.wikipedia.org/wiki/Mandatory_access_control)
-* [Grsecurity](https://grsecurity.net)
+* [grsecurity](https://grsecurity.net)
 * [docker exploit](http://stealth.openwall.net/xSports/shocker.c)
 * [KitKat + SEAndroid](https://software.intel.com/en-us/android/articles/android-security-customization-with-seandroid)
 
