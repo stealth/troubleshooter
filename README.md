@@ -46,7 +46,7 @@ The audit subsystem can be be further configured with plugins to handle such
 messages. For example on a Fedora 21 system there is a plugin that further
 mangles such messages via _sedispatch_ to the _setroubleshoot_ DBUS service.
 Since everything in a targeted policy is safe due to type enforcement MAC
-(which we will break later), all this runs as root of corse.
+(which we will break later), all this runs as root of course.
 
 ##### Where is my mind?
 
@@ -114,9 +114,9 @@ attack vectors (not just _NetworkManager's_ integrated wifi setup in case
 the openvpn plugin is not available), some of
 them might work remotely. All an attacker needs to do is to trick a confined
 domain to access one of his files. If **polkit** has rules to just allow
-active or console sessions to access the attack vector, thats not an
-obstacle either: just put it to the target users *.bashrc* to execute
-it on attackers behalf.
+active or console sessions to access the attack vector, that is not an
+obstacle either: just put it to the target user's *.bashrc* to execute
+it on the attacker's behalf.
 
 ##### Conclusion
 
@@ -135,7 +135,7 @@ kernel part and some of the libraries) are of good code quality and
 type enforcement has been well researched. If you play a little bit
 around with it you immediately see its value and get to know that
 it has its beauty. However, type enforcement does not allow to switch
-off brain and to frame around a lot of crap that eventually just throws
+off the brain and to frame around a lot of crap that eventually just throws
 away what the MAC system initially bought you.
 In fact, SELinux has silently become the largest installation base of a MAC
 system by the SEAndroid rollout since __KitKat__, without major problems.
